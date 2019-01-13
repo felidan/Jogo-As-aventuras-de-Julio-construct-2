@@ -4,6 +4,11 @@ Jogo - As Aventuras de Julio - Computação Gráfica
 Este projeto é um jogo de plataforma que foi desenvolvido como um trabalho da matéria Desenvolvimento de jogos do Centro universitário da FEI. 
 [Ler documentos da pasta Docs]
 
+## Autores
+* Felipe Dantas;
+* Felipe Lira;
+* Yumi Macedo.
+
 ## Requisitos para a versão do código fonte
 * Construct 2.
 
