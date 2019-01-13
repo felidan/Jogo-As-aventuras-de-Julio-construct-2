@@ -1,0 +1,1739 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>EventPrincipal</name>
+    <events>
+        <variable constant="0" name="pontos" sid="650970632116850" static="0" type="number">0</variable>
+        <variable constant="0" name="chave" sid="552246135503997" static="0" type="number">0</variable>
+        <variable constant="0" name="hp" sid="938790458685969" static="0" type="number">3</variable>
+        <variable constant="0" name="time_segundos" sid="721141388581819" static="0" type="number">0</variable>
+        <variable constant="0" name="time_minutos" sid="871437982617298" static="0" type="number">0</variable>
+        <event-group description="" sid="971830877836204" title="System">
+            <sub-events>
+                <event-group description="" sid="389041290888207" title="Morre">
+                    <sub-events>
+                        <event-block sid="858071296060681">
+                            <conditions>
+                                <condition id="-2" name="Compare Y" sid="496887607172437" type="heroi_caixa">
+                                    <param id="0" name="Comparison">4</param>
+                                    <param id="1" name="Y co-ordinate">LayoutHeight</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="701001019899468" type="System">
+                                    <param id="0" name="Variable">hp</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="148051344096888">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="591422011069307" type="System">
+                                    <param id="0" name="Variable">hp</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="333761112138386" type="heroi">
+                                    <param id="0" name="Animation">&quot;Morrendo&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="629324864799996" type="System">
+                                    <param id="0" name="Variable">hp</param>
+                                    <param id="1" name="Value">3</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="228376189997071" type="System">
+                                    <param id="0" name="Variable">chave</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="168119665369637" type="System">
+                                    <param id="0" name="Variable">pontos</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="153440045643377" type="System">
+                                    <param id="0" name="Variable">time_minutos</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="460779256234599" type="System">
+                                    <param id="0" name="Variable">time_segundos</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action behavior="Fade" id="2" name="Set fade-in time" sid="646732397637066" type="fade_fase">
+                                    <param id="0" name="Fade-in time">1</param>
+                                </action>
+                                <action behavior="Fade" id="1" name="Start fade" sid="874458855755125" type="fade_fase" />
+                                <action id="-16" name="Wait" sid="692220633837764" type="System">
+                                    <param id="0" name="Seconds">1.0</param>
+                                </action>
+                                <action id="-25" name="Go to layout (by name)" sid="623797038508095" type="System">
+                                    <param id="0" name="Layout">&quot;Menu&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-block sid="530159419555404">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="119333948835446" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-4" name="Set position to another object" sid="273876016667372" type="heroi">
+                            <param id="0" name="Object">heroi_caixa</param>
+                            <param id="1" name="Image point (optional)">0</param>
+                        </action>
+                        <action id="-5" name="Set width" sid="388812816078008" type="Vida">
+                            <param id="0" name="Width">70*hp</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="722038987309501" title="Teclado">
+            <sub-events>
+                <event-block sid="760216599391286">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="747541514666234" type="Keyboard">
+                            <param id="0" name="Key">38 (Up arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="649340496056527" type="heroi_caixa">
+                            <param id="0" name="Control">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="892630469684177">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="109588695188010" type="Keyboard">
+                            <param id="0" name="Key">37 (Left arrow)</param>
+                        </condition>
+                        <condition id="2" inverted="1" name="Key is down" sid="353498627794937" type="Keyboard">
+                            <param id="0" name="Key">39 (Right arrow)</param>
+                        </condition>
+                        <condition behavior="Platform" id="10" inverted="1" name="Is by wall" sid="677592156721357" type="heroi_caixa">
+                            <param id="0" name="Side">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="326630332959596" type="heroi_caixa">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="217253872003996" type="heroi">
+                            <param id="0" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="734439772974561">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="972901593336961" type="Keyboard">
+                            <param id="0" name="Key">39 (Right arrow)</param>
+                        </condition>
+                        <condition id="2" inverted="1" name="Key is down" sid="352058831302704" type="Keyboard">
+                            <param id="0" name="Key">37 (Left arrow)</param>
+                        </condition>
+                        <condition behavior="Platform" id="10" inverted="1" name="Is by wall" sid="917439178524359" type="heroi_caixa">
+                            <param id="0" name="Side">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="128028938432149" type="heroi_caixa">
+                            <param id="0" name="Control">1</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="192569734896650" type="heroi">
+                            <param id="0" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="518264984726868" title="Animação">
+            <sub-events>
+                <event-block sid="244213969975153">
+                    <conditions>
+                        <condition behavior="Platform" id="2" name="Is on floor" sid="404049601851096" type="heroi_caixa" />
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="211337276897405" type="heroi_caixa">
+                            <param id="0" name="Instance variable">slide</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="322103907038847">
+                            <conditions>
+                                <condition behavior="Platform" id="0" name="Is moving" sid="991164635226717" type="heroi_caixa" />
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="110087108932977" type="heroi">
+                                    <param id="0" name="Animation">&quot;Correndo&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="630566542596671">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="109074459200083" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="188976277223328" type="heroi">
+                                    <param id="0" name="Animation">&quot;Parado&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="688987063970446">
+                    <conditions>
+                        <condition behavior="Platform" id="3" name="Is jumping" sid="602922784186845" type="heroi_caixa" />
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="645878082471113" type="heroi_caixa">
+                            <param id="0" name="Instance variable">slide</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="217519327439101" type="heroi">
+                            <param id="0" name="Animation">&quot;Pulando&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="355019078703050">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="839541709276326" type="Keyboard">
+                            <param id="0" name="Key">32 (Space)</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="283318270318665" type="heroi_caixa">
+                            <param id="0" name="Instance variable">slide</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="555264476224351" type="heroi_caixa">
+                            <param id="0" name="Instance variable">knockback</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="467844451371628" type="heroi">
+                            <param id="0" name="Animation">&quot;Slide&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="401440986923023" type="heroi_caixa">
+                            <param id="0" name="Instance variable">slide</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="296560471301464" title="Ataque do heroi">
+            <sub-events>
+                <event-block sid="784324330895796">
+                    <conditions>
+                        <condition id="2" name="Is playing" sid="279314777425813" type="heroi">
+                            <param id="0" name="Animation">&quot;Slide&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-4" name="Set position to another object" sid="127443819587328" type="slide_golpe">
+                            <param id="0" name="Object">heroi</param>
+                            <param id="1" name="Image point (optional)">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="119230417894709">
+                            <conditions>
+                                <condition id="3" name="Compare frame" sid="476344992041381" type="heroi">
+                                    <param id="0" name="Comparison">0</param>
+                                    <param id="1" name="Number">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="418604152791456" type="System">
+                                    <param id="0" name="Object to create">slide_golpe</param>
+                                    <param id="1" name="Layer">heroi.LayerName</param>
+                                    <param id="2" name="X">heroi.ImagePointX(1)</param>
+                                    <param id="3" name="Y">heroi.ImagePointY(1)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="154238214746394">
+                            <conditions>
+                                <condition id="3" name="Compare frame" sid="820862710974952" type="heroi">
+                                    <param id="0" name="Comparison">1</param>
+                                    <param id="1" name="Number">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="640839404114049" type="slide_golpe" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="287524104178743">
+                    <conditions>
+                        <condition id="4" name="On finished" sid="409426133209796" type="heroi">
+                            <param id="0" name="Animation">&quot;Slide&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" sid="941010498205084" type="heroi_caixa">
+                            <param id="0" name="Instance variable">slide</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="675497353307222">
+            <conditions>
+                <condition id="-8" name="Is boolean instance variable set" sid="313467802121768" type="heroi_caixa">
+                    <param id="0" name="Instance variable">knockback</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="686235566076909">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="925690483026068" type="heroi_caixa">
+                            <param id="0" name="Instance variable">knockback_dr</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;E&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="8" name="Set vector X" sid="820108591835110" type="heroi_caixa">
+                            <param id="0" name="Vector X">-100</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="267925882535628" type="heroi">
+                            <param id="0" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="942654663042598">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="374327278983487" type="heroi_caixa">
+                            <param id="0" name="Instance variable">knockback_dr</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;D&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="8" name="Set vector X" sid="401854663803472" type="heroi_caixa">
+                            <param id="0" name="Vector X">100</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="943741056532299" type="heroi">
+                            <param id="0" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="245066640573543">
+                    <conditions>
+                        <condition id="-4" name="Trigger once while true" sid="474717683475084" type="System" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="9" name="Set vector Y" sid="994044757661210" type="heroi_caixa">
+                            <param id="0" name="Vector Y">-300</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="676561609205090">
+            <conditions>
+                <condition behavior="Platform" id="9" name="On landed" sid="179410382454342" type="heroi_caixa" />
+                <condition id="-8" name="Is boolean instance variable set" sid="323068860320967" type="heroi_caixa">
+                    <param id="0" name="Instance variable">knockback</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-13" name="Set boolean" sid="905064436266358" type="heroi_caixa">
+                    <param id="0" name="Instance variable">knockback</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action behavior="Platform" id="0" name="Set ignoring input" sid="233885532160201" type="heroi_caixa">
+                    <param id="0" name="Input">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="" sid="108963064859224" title="Obstaculos e inimigos">
+            <sub-events>
+                <event-group description="" sid="186034559729096" title="Esqueleto">
+                    <sub-events>
+                        <event-block sid="568649283602126">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="527605768660029" type="inimigo4">
+                                    <param id="0" name="Instance variable">dir</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;E&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="239121884713722" type="inimigo4">
+                                    <param id="0" name="Control">0</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="949241556087295" type="inimigo4">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="521058690052607">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="824622254455900" type="inimigo4">
+                                    <param id="0" name="Instance variable">dir</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;D&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="963543312959674" type="inimigo4">
+                                    <param id="0" name="Control">1</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="526629024276458" type="inimigo4">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="776846813455892">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="639828871056298" type="inimigo4">
+                                    <param id="0" name="Object">heroi_caixa</param>
+                                </condition>
+                                <condition behavior="Flash" id="0" inverted="1" name="Is flashing" sid="219651697775795" type="heroi" />
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="196945135124090">
+                                    <conditions />
+                                    <actions>
+                                        <action behavior="Platform" id="7" name="Simulate control" sid="114446231042770" type="inimigo4">
+                                            <param id="0" name="Control">0</param>
+                                        </action>
+                                        <action id="7" name="Set mirrored" sid="551187619250121" type="inimigo4">
+                                            <param id="0" name="State">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="693464994646766">
+                                    <conditions>
+                                        <condition id="-2" name="Compare Y" sid="651901761399789" type="heroi_caixa">
+                                            <param id="0" name="Comparison">2</param>
+                                            <param id="1" name="Y co-ordinate">inimigo.Y</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-12" name="Subtract from" sid="916269264773997" type="inimigo4">
+                                            <param id="0" name="Instance variable">hp</param>
+                                            <param id="1" name="Value">2</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="376062703895047">
+                                            <conditions>
+                                                <condition id="2" name="Key is down" sid="797010686876276" type="Keyboard">
+                                                    <param id="0" name="Key">38 (Up arrow)</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Platform" id="9" name="Set vector Y" sid="771402242799471" type="heroi_caixa">
+                                                    <param id="0" name="Vector Y">-750</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="340619192713714">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="821842649560841" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Platform" id="9" name="Set vector Y" sid="811668386096131" type="heroi_caixa">
+                                                    <param id="0" name="Vector Y">-300</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="371832447990454">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="447167475534692" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-11" name="Subtract from" sid="517927921514336" type="System">
+                                            <param id="0" name="Variable">hp</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="-5" name="Set width" sid="629301025739713" type="Vida">
+                                            <param id="0" name="Width">70*hp</param>
+                                        </action>
+                                        <action behavior="Flash" id="0" name="Flash" sid="407667419449565" type="heroi">
+                                            <param id="0" name="&apos;On&apos; time">0.05</param>
+                                            <param id="1" name="&apos;Off&apos; time">0.05</param>
+                                            <param id="2" name="Duration">1.0</param>
+                                        </action>
+                                        <action id="-13" name="Set boolean" sid="137978810877030" type="heroi_caixa">
+                                            <param id="0" name="Instance variable">knockback</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action behavior="Platform" id="0" name="Set ignoring input" sid="322943518448260" type="heroi_caixa">
+                                            <param id="0" name="Input">1</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="748091640382065">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="510847590857790" type="inimigo4">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">heroi_caixa.X</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-10" name="Set value" sid="335331253412150" type="heroi_caixa">
+                                                    <param id="0" name="Instance variable">knockback_dr</param>
+                                                    <param id="1" name="Value">&quot;E&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="485373463778909">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="671843845556670" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-10" name="Set value" sid="306393355697114" type="heroi_caixa">
+                                                    <param id="0" name="Instance variable">knockback_dr</param>
+                                                    <param id="1" name="Value">&quot;D&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="988600771822305">
+                            <conditions>
+                                <condition behavior="Platform" id="10" name="Is by wall" sid="974774475979181" type="inimigo4">
+                                    <param id="0" name="Side">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="124435926166048" type="inimigo4">
+                                    <param id="0" name="Instance variable">dir</param>
+                                    <param id="1" name="Value">&quot;D&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="649115497602267">
+                            <conditions>
+                                <condition behavior="Platform" id="10" name="Is by wall" sid="456653179077117" type="inimigo4">
+                                    <param id="0" name="Side">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="539220639185194" type="inimigo4">
+                                    <param id="0" name="Instance variable">dir</param>
+                                    <param id="1" name="Value">&quot;E&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="735284190350635">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="930741263402164" type="inimigo4">
+                                    <param id="0" name="Object">slide_golpe</param>
+                                </condition>
+                                <condition id="-4" name="Trigger once while true" sid="131329495937349" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" sid="460857722619390" type="inimigo4">
+                                    <param id="0" name="Instance variable">hp</param>
+                                    <param id="1" name="Value">2</param>
+                                </action>
+                                <action id="-28" name="Set effect parameter" sid="705990949768045" type="inimigo4">
+                                    <param id="0" name="Effect">&quot;Brightness&quot;</param>
+                                    <param id="1" name="Parameter index">0</param>
+                                    <param id="2" name="Value">200</param>
+                                </action>
+                                <action id="-16" name="Wait" sid="325981698495769" type="System">
+                                    <param id="0" name="Seconds">0.05</param>
+                                </action>
+                                <action id="-28" name="Set effect parameter" sid="420320264037599" type="inimigo4">
+                                    <param id="0" name="Effect">&quot;Brightness&quot;</param>
+                                    <param id="1" name="Parameter index">0</param>
+                                    <param id="2" name="Value">100</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="873532242477240">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="561423638084385" type="inimigo4">
+                                    <param id="0" name="Instance variable">hp</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="297993572688446" type="inimigo4" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="659736697382654" title="Morcego">
+                    <sub-events>
+                        <event-block sid="185706420326055">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="817478512584771" type="inimigo2">
+                                    <param id="0" name="Object">heroi_caixa</param>
+                                </condition>
+                                <condition behavior="Flash" id="0" inverted="1" name="Is flashing" sid="312955355268001" type="heroi" />
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="731928216100564">
+                                    <conditions>
+                                        <condition id="-2" name="Compare Y" sid="134572134429050" type="heroi_caixa">
+                                            <param id="0" name="Comparison">2</param>
+                                            <param id="1" name="Y co-ordinate">inimigo2.Y</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-12" name="Subtract from" sid="407237715272789" type="inimigo2">
+                                            <param id="0" name="Instance variable">hp</param>
+                                            <param id="1" name="Value">2</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="248129181284178">
+                                            <conditions>
+                                                <condition id="2" name="Key is down" sid="838428427052559" type="Keyboard">
+                                                    <param id="0" name="Key">38 (Up arrow)</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Platform" id="9" name="Set vector Y" sid="261611337220711" type="heroi_caixa">
+                                                    <param id="0" name="Vector Y">-750</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="478063703023350">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="839692680587416" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Platform" id="9" name="Set vector Y" sid="559373351929284" type="heroi_caixa">
+                                                    <param id="0" name="Vector Y">-300</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="402801183559605">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="634405824909464" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-11" name="Subtract from" sid="251747442780551" type="System">
+                                            <param id="0" name="Variable">hp</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="-5" name="Set width" sid="818131360233521" type="Vida">
+                                            <param id="0" name="Width">70*hp</param>
+                                        </action>
+                                        <action behavior="Flash" id="0" name="Flash" sid="874405415954368" type="heroi">
+                                            <param id="0" name="&apos;On&apos; time">0.05</param>
+                                            <param id="1" name="&apos;Off&apos; time">0.05</param>
+                                            <param id="2" name="Duration">1.0</param>
+                                        </action>
+                                        <action id="-13" name="Set boolean" sid="302024913474852" type="heroi_caixa">
+                                            <param id="0" name="Instance variable">knockback</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action behavior="Platform" id="0" name="Set ignoring input" sid="548653961207147" type="heroi_caixa">
+                                            <param id="0" name="Input">1</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="372885336707159">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="940362675629437" type="inimigo2">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">heroi_caixa.X</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-10" name="Set value" sid="517210735725384" type="heroi_caixa">
+                                                    <param id="0" name="Instance variable">knockback_dr</param>
+                                                    <param id="1" name="Value">&quot;E&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="663477517356485">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="135098928395073" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-10" name="Set value" sid="454209827654873" type="heroi_caixa">
+                                                    <param id="0" name="Instance variable">knockback_dr</param>
+                                                    <param id="1" name="Value">&quot;D&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="361698867385455">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="210274506297677" type="inimigo2">
+                                    <param id="0" name="Object">slide_golpe</param>
+                                </condition>
+                                <condition id="-4" name="Trigger once while true" sid="991560497512383" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" sid="749522159921035" type="inimigo2">
+                                    <param id="0" name="Instance variable">hp</param>
+                                    <param id="1" name="Value">2</param>
+                                </action>
+                                <action id="-28" name="Set effect parameter" sid="818770597598586" type="inimigo2">
+                                    <param id="0" name="Effect">&quot;Brightness&quot;</param>
+                                    <param id="1" name="Parameter index">0</param>
+                                    <param id="2" name="Value">200</param>
+                                </action>
+                                <action id="-16" name="Wait" sid="523463562331911" type="System">
+                                    <param id="0" name="Seconds">0.05</param>
+                                </action>
+                                <action id="-28" name="Set effect parameter" sid="792290688257259" type="inimigo2">
+                                    <param id="0" name="Effect">&quot;Brightness&quot;</param>
+                                    <param id="1" name="Parameter index">0</param>
+                                    <param id="2" name="Value">100</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="195692403323297">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="583959403192286" type="inimigo2">
+                                    <param id="0" name="Instance variable">ativo</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Bullet" id="0" name="Set speed" sid="885042061035824" type="inimigo2">
+                                    <param id="0" name="Speed">400</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="830179812671605">
+                            <conditions>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="201207790377735" type="inimigo2">
+                                    <param id="0" name="Instance variable">ativo</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Bullet" id="0" name="Set speed" sid="623435022447305" type="inimigo2">
+                                    <param id="0" name="Speed">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="969180794949667">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="561639613346380" type="inimigo2">
+                                    <param id="0" name="Instance variable">hp</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="368631348650894" type="inimigo2" />
+                            </actions>
+                        </event-block>
+                        <event-block sid="726926366032999">
+                            <conditions>
+                                <condition id="-3" name="Is on-screen" sid="105077205855716" type="inimigo2" />
+                            </conditions>
+                            <actions>
+                                <action id="-13" name="Set boolean" sid="225937479923684" type="inimigo2">
+                                    <param id="0" name="Instance variable">ativo</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="855204202440321">
+                            <conditions>
+                                <condition id="-1" name="Every tick" sid="964978523905200" type="System" />
+                            </conditions>
+                            <actions>
+                                <action behavior="Bullet" id="3" name="Set angle of motion" sid="262386876764401" type="inimigo2">
+                                    <param id="0" name="Angle">angle(inimigo2.X,inimigo2.Y,heroi_caixa.X,heroi_caixa.Y)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="559300009125921">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="509236708264373" type="System">
+                                    <param id="0" name="Object">inimigo2</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="906529591548758">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="168529543469748" type="inimigo2">
+                                            <param id="0" name="Comparison">4</param>
+                                            <param id="1" name="X co-ordinate">heroi_caixa.X</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="7" name="Set mirrored" sid="300507349479430" type="inimigo2">
+                                            <param id="0" name="State">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="767365687909793">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="670228242530158" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="7" name="Set mirrored" sid="908007015734811" type="inimigo2">
+                                            <param id="0" name="State">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="404380633402759" title="Obstaculos">
+                    <sub-events>
+                        <event-block sid="727614391488729">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="414127767330838" type="espinhos">
+                                    <param id="0" name="Object">heroi_caixa</param>
+                                </condition>
+                                <condition behavior="Flash" id="0" inverted="1" name="Is flashing" sid="626442340767594" type="heroi" />
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Subtract from" sid="582826520965518" type="System">
+                                    <param id="0" name="Variable">hp</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-5" name="Set width" sid="718110806402071" type="Vida">
+                                    <param id="0" name="Width">70*hp</param>
+                                </action>
+                                <action behavior="Flash" id="0" name="Flash" sid="579146392501567" type="heroi">
+                                    <param id="0" name="&apos;On&apos; time">0.05</param>
+                                    <param id="1" name="&apos;Off&apos; time">0.05</param>
+                                    <param id="2" name="Duration">1.5</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="971926810018955" type="heroi_caixa">
+                                    <param id="0" name="Instance variable">knockback</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="683695858350952">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="199958332254914" type="lamina_chao">
+                                    <param id="0" name="Object">heroi_caixa</param>
+                                </condition>
+                                <condition behavior="Flash" id="0" inverted="1" name="Is flashing" sid="331117241591446" type="heroi" />
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Subtract from" sid="775817146508777" type="System">
+                                    <param id="0" name="Variable">hp</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-5" name="Set width" sid="135329950896990" type="Vida">
+                                    <param id="0" name="Width">70*hp</param>
+                                </action>
+                                <action behavior="Flash" id="0" name="Flash" sid="438979656845046" type="heroi">
+                                    <param id="0" name="&apos;On&apos; time">0.05</param>
+                                    <param id="1" name="&apos;Off&apos; time">0.05</param>
+                                    <param id="2" name="Duration">1.5</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="486492319155697" type="heroi_caixa">
+                                    <param id="0" name="Instance variable">knockback</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="142037954044575">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="284612081148112" type="lamina">
+                                    <param id="0" name="Object">heroi_caixa</param>
+                                </condition>
+                                <condition behavior="Flash" id="0" inverted="1" name="Is flashing" sid="521550185541750" type="heroi" />
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Subtract from" sid="729312874368020" type="System">
+                                    <param id="0" name="Variable">hp</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-5" name="Set width" sid="887419163610590" type="Vida">
+                                    <param id="0" name="Width">70*hp</param>
+                                </action>
+                                <action behavior="Flash" id="0" name="Flash" sid="225088425778138" type="heroi">
+                                    <param id="0" name="&apos;On&apos; time">0.05</param>
+                                    <param id="1" name="&apos;Off&apos; time">0.05</param>
+                                    <param id="2" name="Duration">1.5</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="783478771312063" type="heroi_caixa">
+                                    <param id="0" name="Instance variable">knockback</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="809212653609690" title="Lobo2">
+                    <sub-events>
+                        <event-block sid="756058178026197">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="670541237598072" type="inimigo3">
+                                    <param id="0" name="Instance variable">dir</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;E&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="629128191871875" type="inimigo3">
+                                    <param id="0" name="Control">0</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="666523103645912" type="inimigo3">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="656017125228501">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="479913752836908" type="inimigo3">
+                                    <param id="0" name="Instance variable">dir</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;D&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="494629816089100" type="inimigo3">
+                                    <param id="0" name="Control">1</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="557447849699907" type="inimigo3">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="655802671238470">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="981267643261711" type="inimigo3">
+                                    <param id="0" name="Object">heroi_caixa</param>
+                                </condition>
+                                <condition behavior="Flash" id="0" inverted="1" name="Is flashing" sid="689878626397996" type="heroi" />
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="302741296476625">
+                                    <conditions />
+                                    <actions>
+                                        <action behavior="Platform" id="7" name="Simulate control" sid="540480864428703" type="inimigo3">
+                                            <param id="0" name="Control">0</param>
+                                        </action>
+                                        <action id="7" name="Set mirrored" sid="308272344577805" type="inimigo3">
+                                            <param id="0" name="State">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="990173009298543">
+                                    <conditions>
+                                        <condition id="-2" name="Compare Y" sid="810586709571620" type="heroi_caixa">
+                                            <param id="0" name="Comparison">2</param>
+                                            <param id="1" name="Y co-ordinate">inimigo.Y</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-12" name="Subtract from" sid="766052979075678" type="inimigo3">
+                                            <param id="0" name="Instance variable">hp</param>
+                                            <param id="1" name="Value">2</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="545278937344504">
+                                            <conditions>
+                                                <condition id="2" name="Key is down" sid="356688171039185" type="Keyboard">
+                                                    <param id="0" name="Key">38 (Up arrow)</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Platform" id="9" name="Set vector Y" sid="507795048909251" type="heroi_caixa">
+                                                    <param id="0" name="Vector Y">-750</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="884343331306846">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="603496423520108" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Platform" id="9" name="Set vector Y" sid="108885964436582" type="heroi_caixa">
+                                                    <param id="0" name="Vector Y">-300</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="588357173977153">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="656219780845659" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-11" name="Subtract from" sid="381872515919886" type="System">
+                                            <param id="0" name="Variable">hp</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="-5" name="Set width" sid="529984065394486" type="Vida">
+                                            <param id="0" name="Width">70*hp</param>
+                                        </action>
+                                        <action behavior="Flash" id="0" name="Flash" sid="372788597907340" type="heroi">
+                                            <param id="0" name="&apos;On&apos; time">0.05</param>
+                                            <param id="1" name="&apos;Off&apos; time">0.05</param>
+                                            <param id="2" name="Duration">1.0</param>
+                                        </action>
+                                        <action id="-13" name="Set boolean" sid="376625049262238" type="heroi_caixa">
+                                            <param id="0" name="Instance variable">knockback</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action behavior="Platform" id="0" name="Set ignoring input" sid="890457153381558" type="heroi_caixa">
+                                            <param id="0" name="Input">1</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="218617192329786">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="948537909706201" type="inimigo3">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">heroi_caixa.X</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-10" name="Set value" sid="194014034325149" type="heroi_caixa">
+                                                    <param id="0" name="Instance variable">knockback_dr</param>
+                                                    <param id="1" name="Value">&quot;E&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="487910619545845">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="983038322273422" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-10" name="Set value" sid="652796946420755" type="heroi_caixa">
+                                                    <param id="0" name="Instance variable">knockback_dr</param>
+                                                    <param id="1" name="Value">&quot;D&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="561486268942742">
+                            <conditions>
+                                <condition behavior="Platform" id="10" name="Is by wall" sid="377825152090305" type="inimigo3">
+                                    <param id="0" name="Side">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="808121071567849" type="inimigo3">
+                                    <param id="0" name="Instance variable">dir</param>
+                                    <param id="1" name="Value">&quot;D&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="905070050417638">
+                            <conditions>
+                                <condition behavior="Platform" id="10" name="Is by wall" sid="593716894393223" type="inimigo3">
+                                    <param id="0" name="Side">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="940040286871694" type="inimigo3">
+                                    <param id="0" name="Instance variable">dir</param>
+                                    <param id="1" name="Value">&quot;E&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="504036077588674">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="662941418687222" type="inimigo3">
+                                    <param id="0" name="Object">slide_golpe</param>
+                                </condition>
+                                <condition id="-4" name="Trigger once while true" sid="554614860785497" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" sid="118208215435035" type="inimigo3">
+                                    <param id="0" name="Instance variable">hp</param>
+                                    <param id="1" name="Value">2</param>
+                                </action>
+                                <action id="-28" name="Set effect parameter" sid="391310539796339" type="inimigo3">
+                                    <param id="0" name="Effect">&quot;Brightness&quot;</param>
+                                    <param id="1" name="Parameter index">0</param>
+                                    <param id="2" name="Value">200</param>
+                                </action>
+                                <action id="-16" name="Wait" sid="167135019748273" type="System">
+                                    <param id="0" name="Seconds">0.05</param>
+                                </action>
+                                <action id="-28" name="Set effect parameter" sid="220552298977676" type="inimigo3">
+                                    <param id="0" name="Effect">&quot;Brightness&quot;</param>
+                                    <param id="1" name="Parameter index">0</param>
+                                    <param id="2" name="Value">100</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="593320437324619">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="375831400325859" type="inimigo3">
+                                    <param id="0" name="Instance variable">hp</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="473538132290865" type="inimigo3" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="579376017706843" title="Lobo">
+                    <sub-events>
+                        <event-block sid="239639863164559">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="256368151188826" type="inimigo">
+                                    <param id="0" name="Instance variable">dir</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;E&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="639514786376865" type="inimigo">
+                                    <param id="0" name="Control">0</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="973068700332764" type="inimigo">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="510310519822087">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="734725612669528" type="inimigo">
+                                    <param id="0" name="Instance variable">dir</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;D&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="814806048679423" type="inimigo">
+                                    <param id="0" name="Control">1</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="987844178047656" type="inimigo">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="643738277123916">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="220030827588394" type="inimigo">
+                                    <param id="0" name="Object">heroi_caixa</param>
+                                </condition>
+                                <condition behavior="Flash" id="0" inverted="1" name="Is flashing" sid="391238413966191" type="heroi" />
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="716640223508289">
+                                    <conditions />
+                                    <actions>
+                                        <action behavior="Platform" id="7" name="Simulate control" sid="207369839601371" type="inimigo">
+                                            <param id="0" name="Control">0</param>
+                                        </action>
+                                        <action id="7" name="Set mirrored" sid="358437086825896" type="inimigo">
+                                            <param id="0" name="State">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="971822208157300">
+                                    <conditions>
+                                        <condition id="-2" name="Compare Y" sid="365206661282724" type="heroi_caixa">
+                                            <param id="0" name="Comparison">2</param>
+                                            <param id="1" name="Y co-ordinate">inimigo.Y</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-12" name="Subtract from" sid="367406916597538" type="inimigo">
+                                            <param id="0" name="Instance variable">hp</param>
+                                            <param id="1" name="Value">2</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="406794649766008">
+                                            <conditions>
+                                                <condition id="2" name="Key is down" sid="731844702797864" type="Keyboard">
+                                                    <param id="0" name="Key">38 (Up arrow)</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Platform" id="9" name="Set vector Y" sid="321464035359587" type="heroi_caixa">
+                                                    <param id="0" name="Vector Y">-750</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="740435780504088">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="927541109866779" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Platform" id="9" name="Set vector Y" sid="302176840490861" type="heroi_caixa">
+                                                    <param id="0" name="Vector Y">-300</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="914927615801248">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="169176346754957" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-11" name="Subtract from" sid="919520468257325" type="System">
+                                            <param id="0" name="Variable">hp</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="-5" name="Set width" sid="874546057562541" type="Vida">
+                                            <param id="0" name="Width">70*hp</param>
+                                        </action>
+                                        <action behavior="Flash" id="0" name="Flash" sid="654080150459459" type="heroi">
+                                            <param id="0" name="&apos;On&apos; time">0.05</param>
+                                            <param id="1" name="&apos;Off&apos; time">0.05</param>
+                                            <param id="2" name="Duration">1.0</param>
+                                        </action>
+                                        <action id="-13" name="Set boolean" sid="436867887728934" type="heroi_caixa">
+                                            <param id="0" name="Instance variable">knockback</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action behavior="Platform" id="0" name="Set ignoring input" sid="937216657508234" type="heroi_caixa">
+                                            <param id="0" name="Input">1</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="868194123903032">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="373074826253512" type="inimigo">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">heroi_caixa.X</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-10" name="Set value" sid="681653147611168" type="heroi_caixa">
+                                                    <param id="0" name="Instance variable">knockback_dr</param>
+                                                    <param id="1" name="Value">&quot;E&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="391418928633210">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="419013329066639" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-10" name="Set value" sid="201669116170750" type="heroi_caixa">
+                                                    <param id="0" name="Instance variable">knockback_dr</param>
+                                                    <param id="1" name="Value">&quot;D&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="636274542664932">
+                            <conditions>
+                                <condition behavior="Platform" id="10" name="Is by wall" sid="135793380907187" type="inimigo">
+                                    <param id="0" name="Side">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="982897291441987" type="inimigo">
+                                    <param id="0" name="Instance variable">dir</param>
+                                    <param id="1" name="Value">&quot;D&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="954864460218086">
+                            <conditions>
+                                <condition behavior="Platform" id="10" name="Is by wall" sid="974521355985002" type="inimigo">
+                                    <param id="0" name="Side">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="478307734017720" type="inimigo">
+                                    <param id="0" name="Instance variable">dir</param>
+                                    <param id="1" name="Value">&quot;E&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="527154317971292">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="676426295370006" type="inimigo">
+                                    <param id="0" name="Object">slide_golpe</param>
+                                </condition>
+                                <condition id="-4" name="Trigger once while true" sid="792779136380804" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" sid="233934317621770" type="inimigo">
+                                    <param id="0" name="Instance variable">hp</param>
+                                    <param id="1" name="Value">2</param>
+                                </action>
+                                <action id="-28" name="Set effect parameter" sid="215329864223857" type="inimigo">
+                                    <param id="0" name="Effect">&quot;Brightness&quot;</param>
+                                    <param id="1" name="Parameter index">0</param>
+                                    <param id="2" name="Value">200</param>
+                                </action>
+                                <action id="-16" name="Wait" sid="720825097481421" type="System">
+                                    <param id="0" name="Seconds">0.05</param>
+                                </action>
+                                <action id="-28" name="Set effect parameter" sid="454772982268585" type="inimigo">
+                                    <param id="0" name="Effect">&quot;Brightness&quot;</param>
+                                    <param id="1" name="Parameter index">0</param>
+                                    <param id="2" name="Value">100</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="724716369415117">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="983040830383786" type="inimigo">
+                                    <param id="0" name="Instance variable">hp</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="516003363022845" type="inimigo" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="602279785922151" title="Itens do jogo (Vida/Pontos/chave)">
+            <sub-events>
+                <event-block sid="422002270204994">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="543210067790149" type="nova_vida">
+                            <param id="0" name="Object">heroi_caixa</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="923460011459611" type="System" />
+                        <condition id="-14" name="Compare variable" sid="102531090766406" type="System">
+                            <param id="0" name="Variable">hp</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">3</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="113907999883370" type="System">
+                            <param id="0" name="Variable">hp</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-5" name="Set width" sid="254116015521393" type="Vida">
+                            <param id="0" name="Width">70*hp</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="923457464854494" type="nova_vida" />
+                    </actions>
+                </event-block>
+                <event-block sid="172273551116765">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="162542115756484" type="chave">
+                            <param id="0" name="Object">heroi_caixa</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="849101753823622" type="System">
+                            <param id="0" name="Variable">chave</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="893271243502191" type="chave" />
+                        <action id="-15" name="Set visible" sid="848837157381033" type="chave_confirma">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="211249596156701">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="361684355269789" type="ponto_nivel_1">
+                            <param id="0" name="Object">heroi_caixa</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="487617078665249" type="System">
+                            <param id="0" name="Variable">pontos</param>
+                            <param id="1" name="Value">50</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="157336574805371" type="ponto_nivel_1" />
+                    </actions>
+                </event-block>
+                <event-block sid="585651195603770">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="269657307783823" type="ponto_nivel_2">
+                            <param id="0" name="Object">heroi_caixa</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="575772669576356" type="System">
+                            <param id="0" name="Variable">pontos</param>
+                            <param id="1" name="Value">100</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="162304334762003" type="ponto_nivel_2" />
+                    </actions>
+                </event-block>
+                <event-block sid="114687751779294">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="532163531613843" type="ponto_nivel_3">
+                            <param id="0" name="Object">heroi_caixa</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="608676536669228" type="System">
+                            <param id="0" name="Variable">pontos</param>
+                            <param id="1" name="Value">500</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="902922009888381" type="ponto_nivel_3" />
+                    </actions>
+                </event-block>
+                <event-block sid="911053781188558">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="392032743129229" type="bonus">
+                            <param id="0" name="Object">heroi_caixa</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="905988858445730" type="System">
+                            <param id="0" name="Variable">pontos</param>
+                            <param id="1" name="Value">1000</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="829365476901104" type="bonus" />
+                    </actions>
+                </event-block>
+                <event-block sid="751214724827977">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="210854256309040" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="943450373866747" type="text_pontos">
+                            <param id="0" name="Text">pontos</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="190263703135710" title="Cronômetro">
+            <sub-events>
+                <event-block sid="826240938424202">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="352880453537910" type="System">
+                            <param id="0" name="Interval (seconds)">1.0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block any="1" sid="729596294705694">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="664714289628752" type="System">
+                                    <param id="0" name="Variable">time_segundos</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">59</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="195107780197681" type="System">
+                                    <param id="0" name="Variable">time_minutos</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="292360245611516" type="System">
+                                    <param id="0" name="Variable">time_segundos</param>
+                                    <param id="1" name="Value">00</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="962298689851364">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="686227886858970" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="648442281029257" type="System">
+                                    <param id="0" name="Variable">time_segundos</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="443261936934154">
+                            <conditions>
+                                <condition id="-1" name="Every tick" sid="896655570176886" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set text" sid="237269276020355" type="text_cronometro">
+                                    <param id="0" name="Text">time_minutos &amp; &quot;:&quot; &amp; time_segundos</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="897828622822632" title="Troca de fases">
+            <sub-events>
+                <event-block sid="462296673651431">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="127096292151399" type="porta_3">
+                            <param id="0" name="Object">heroi_caixa</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="587138069054825">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="982232111348519" type="System">
+                                    <param id="0" name="Variable">chave</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-15" name="Set visible" sid="263701107740411" type="chave_confirma">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                                <action behavior="Fade" id="2" name="Set fade-in time" sid="804703731981500" type="fade_fase">
+                                    <param id="0" name="Fade-in time">5</param>
+                                </action>
+                                <action behavior="Fade" id="1" name="Start fade" sid="474203832518931" type="fade_fase" />
+                                <action id="-16" name="Wait" sid="611725803286208" type="System">
+                                    <param id="0" name="Seconds">1.0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="976652929472234" type="System">
+                                    <param id="0" name="Variable">chave</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-2" name="Go to layout" sid="550482394418295" type="System">
+                                    <param id="0" name="Layout">EndGame</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="142803539789956">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="178088096751682" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set text" sid="588885753130661" type="font">
+                                    <param id="0" name="Text">&quot;&quot;</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="453232818078714" type="font">
+                                    <param id="0" name="Instance variable">texto</param>
+                                    <param id="1" name="Value">&quot;Eh necessario a chave para passar pela porta&quot;</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="102752165557949" type="font">
+                                    <param id="0" name="Instance variable">show</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="598506846553010">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="100783720595422" type="porta_2">
+                            <param id="0" name="Object">heroi_caixa</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="165101984316638">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="794218501942875" type="System">
+                                    <param id="0" name="Variable">chave</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-15" name="Set visible" sid="871621830953871" type="chave_confirma">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                                <action behavior="Fade" id="2" name="Set fade-in time" sid="112128682247809" type="fade_fase">
+                                    <param id="0" name="Fade-in time">1</param>
+                                </action>
+                                <action behavior="Fade" id="1" name="Start fade" sid="316164737973123" type="fade_fase" />
+                                <action id="-16" name="Wait" sid="768568504895818" type="System">
+                                    <param id="0" name="Seconds">1.0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="804793807145484" type="System">
+                                    <param id="0" name="Variable">chave</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-2" name="Go to layout" sid="703583201258913" type="System">
+                                    <param id="0" name="Layout">Fase_3</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="604271045241554">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="638348868095752" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set text" sid="872555344450592" type="font">
+                                    <param id="0" name="Text">&quot;&quot;</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="791521620287538" type="font">
+                                    <param id="0" name="Instance variable">texto</param>
+                                    <param id="1" name="Value">&quot;Eh necessario a chave para passar pela porta&quot;</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="360408956296299" type="font">
+                                    <param id="0" name="Instance variable">show</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="993003268926795">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="698976406747131" type="porta_1">
+                            <param id="0" name="Object">heroi_caixa</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="810719210570720">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="986249383841004" type="System">
+                                    <param id="0" name="Variable">chave</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-15" name="Set visible" sid="258675437934427" type="chave_confirma">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                                <action behavior="Fade" id="2" name="Set fade-in time" sid="542867444595994" type="fade_fase">
+                                    <param id="0" name="Fade-in time">1</param>
+                                </action>
+                                <action behavior="Fade" id="1" name="Start fade" sid="891108537738157" type="fade_fase" />
+                                <action id="-16" name="Wait" sid="295404092646217" type="System">
+                                    <param id="0" name="Seconds">1.0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="662134049982581" type="System">
+                                    <param id="0" name="Variable">chave</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-2" name="Go to layout" sid="732169597847527" type="System">
+                                    <param id="0" name="Layout">Fase_2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="673284936962233">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="545261873361286" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set text" sid="230735356540440" type="font">
+                                    <param id="0" name="Text">&quot;&quot;</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="560452220314749" type="font">
+                                    <param id="0" name="Instance variable">texto</param>
+                                    <param id="1" name="Value">&quot;Eh necessario a chave para passar pela porta&quot;</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="533521649089729" type="font">
+                                    <param id="0" name="Instance variable">show</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="941703510294228" title="Menu">
+            <sub-events>
+                <event-block sid="970409164410195">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="490895383254452" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">btn_start</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Fade" id="2" name="Set fade-in time" sid="786883865967819" type="fade_fase">
+                            <param id="0" name="Fade-in time">1</param>
+                        </action>
+                        <action behavior="Fade" id="1" name="Start fade" sid="307687921250529" type="fade_fase" />
+                        <action id="-2" name="Go to layout" sid="418231397449074" type="System">
+                            <param id="0" name="Layout">Fase_1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="636990792970660">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="840075341832423" type="Keyboard">
+                            <param id="0" name="Key">27 (Esc)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Fade" id="2" name="Set fade-in time" sid="908867109400320" type="fade_fase">
+                            <param id="0" name="Fade-in time">1</param>
+                        </action>
+                        <action behavior="Fade" id="1" name="Start fade" sid="870828367246164" type="fade_fase" />
+                        <action id="-2" name="Go to layout" sid="334113376740539" type="System">
+                            <param id="0" name="Layout">Menu</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="231963256062632" title="Caixa de texto">
+            <sub-events>
+                <event-block sid="813080206085295">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="590973648505663" type="System" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="794925055181639">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="812219647263280" type="font">
+                                    <param id="0" name="Instance variable">show</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-15" name="Set visible" sid="848500596612279" type="caixa_font">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="758310085035495" type="font">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                                <action id="0" name="Set text" sid="331340632023692" type="font">
+                                    <param id="0" name="Text">font.texto</param>
+                                </action>
+                                <action id="-16" name="Wait" sid="411540870058476" type="System">
+                                    <param id="0" name="Seconds">10.0</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="837955241332047" type="font">
+                                    <param id="0" name="Instance variable">show</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="405141056199404">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="550761593634957" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set text" sid="752203990141823" type="font">
+                                    <param id="0" name="Text">&quot;&quot;</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="379577490525714" type="font">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="487415624347097" type="caixa_font">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>
